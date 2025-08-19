@@ -32,7 +32,7 @@ order += "memory"
 order += "disk /"
 
 memory {
-        format = "RAM: %used of %free"
+        format = "RAM: %used"
          threshold_degraded = "10%"
         format_degraded = "MEMORY: %free"
 	align ="center"
