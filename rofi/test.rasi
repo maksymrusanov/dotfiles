@@ -1,0 +1,5 @@
+configuration {
+    background: #000000;
+    foreground: #FF0000;
+    font: "Monospace 12";
+}
