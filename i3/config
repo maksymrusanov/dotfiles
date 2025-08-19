@@ -213,17 +213,15 @@ urgent_workspace #000000 #FFFFFF  #00000
    }
 }
 title_align center
+# class                 border  backgr. text    indicator child_border
+client.focused          #FF0000  #FF0000  #000000  #000000   #FF0000
+client.focused_inactive #000000  #000000  #FF0000  #000000   #000000
 
-client.focused          #FF0000  #FF0000 #000000 #FF0000   #FF0000
-client.focused_inactive #000000 #000000 #FF0000 #000000 #000000
-client.unfocused        #000000 #000000 #FF0000 #000000 #000000
-client.urgent           #2f343a #900000 #FF0000  #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #FF0000 #000000 #000000 #000000 #000000
+client.background       #000000
+
+client.background       #ffffff
 #set background to black 
 exec --no-startup-id xsetroot -solid #3a0000
-for_window [class="^.*"] border pixel 0
-new_window 1pixel
 
 #######################################################################
 # automatically start i3-config-wizard to offer the user to create a
