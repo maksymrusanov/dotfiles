@@ -9,7 +9,9 @@ XTerm*foreground: #c5c8c6
 XTerm*cursorColor: #f8f8f0
 !XTerm*background: [50]black
 
-
-
 ! Misc
 XTerm*saveLines: 10000
+XTerm*scrollBar: true
+XTerm*rightScrollBar: true      ! places scrollbar on right
+XTerm*cursorBlink: true         ! makes cursor blink
+XTerm*cursorShape: block 
