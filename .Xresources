@@ -1,0 +1,15 @@
+! Set the font (you can adjust size here)
+! Font
+XTerm*faceName: Monospace
+XTerm*faceSize: 20
+
+! Colors
+XTerm*background: #000000
+XTerm*foreground: #c5c8c6
+XTerm*cursorColor: #f8f8f0
+!XTerm*background: [50]black
+
+
+
+! Misc
+XTerm*saveLines: 10000
