@@ -76,10 +76,8 @@ bindsym Mod4+d  exec "rofi -show drun -only-match -desktop-dir ~/.local/share/ap
 bindsym Mod1 +f exec nautilus
 #bind telegram
 bindsym Mod1 +t exec Telegram
-##  Screenshots in files
-bindsym Print exec --no-startup-id sh -c 'maim --format=png "/Pictures/screenshot-$(date -u +%Y%m%d-%H%M%SZ)-all.png"
-bindsym Shift+Print exec --no-startup-id sh -c 'maim --format=png | tee "$HOME/Pictures/screenshot-$(date -u +%Y%m%d-%H%M%SZ)-all.png" | xclip -selection clipboard -t image/png'
-
+#bind docker
+bindsym Mod1+d exec docker desktop start
 #bind chromium
 bindsym Mod1+c exec chromium
 #bind VS code 
@@ -149,7 +147,7 @@ set $ws1 "1:  Terminal"
 set $ws2 "2:  Browser"
 set $ws3 "3:   VS code"
 set $ws4 "4:   TG"
-set $ws5 "5"
+set $ws5 "5:DOCKER "
 # switch to workspace
 bindsym Mod4+1 workspace number $ws1
 bindsym Mod4+2 workspace number $ws2
@@ -168,7 +166,7 @@ for_window [class="XTerm"] move to workspace $ws1
 for_window [class="Chromium"] move to workspace $ws2
 for_window [class="Code"] move to workspace $ws3
 for_window [class="Telegram"] move to workspace $ws4
- 
+for_window [class="Docker Desktop"] move to workspace $ws5 
 # reload the configuration file
 bindsym Mod4+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)

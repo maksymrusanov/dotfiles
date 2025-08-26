@@ -32,7 +32,7 @@ order += "memory"
 order += "disk /"
 
 memory {
-        format = "RAM: %used"
+        format = "RAM: %used of %free"
          threshold_degraded = "10%"
         format_degraded = "MEMORY: %free"
 	align ="center"
@@ -41,7 +41,7 @@ memory {
 tztime local {
 	align = "center"
 	timezone = "Europe/London"
-        format = "%a %d %b %y, %H:%M"
+        format = "%a %d %b %Y, %H:%M"
 }
 disk "/" {
     format = "DISK: %free   "
@@ -51,7 +51,7 @@ cpu_usage{
 
 volume master {
         format = "VOLUME: %volume"
-        format_muted = "VOLUME: muted"
+        format_muted = "VOLUME: mutedD"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
