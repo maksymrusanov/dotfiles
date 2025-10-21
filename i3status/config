@@ -21,15 +21,14 @@
 # If the above line is not correctly displayed, fix your editor first!
 
 general {output_format = "i3bar"
- 	colors = false
+	colors = false
         interval =1
 }
 order+="volume_master"
-order+="tztime_local"
-order += "wireless _first_"
 order+="cpu_usage"
 order += "memory"
 order += "disk /"
+order+="tztime_local"
 
 memory {
         format = "RAM: %used"
@@ -41,25 +40,22 @@ memory {
 tztime local {
 	align = "center"
 	timezone = "Europe/London"
-        format = "%a %d %b %y, %H:%M"
+        format = "%a %d %b %y, %H:%M  "
 }
 disk "/" {
-    format = "DISK: %free   "
+    format = "DISK: %free"
 }
 cpu_usage{
 	format="CPU: %usage"}
 
 volume master {
-        format = "VOLUME: %volume"
+        format = "VOLUME:%volume"
         format_muted = "VOLUME: muted"
         device = "default"
         mixer = "Master"
         mixer_idx = 0
 }
-wireless _first_ {
-        format_up = "WIFI: %quality"
-        format_down = "W: down"
-}
+
 
 
 

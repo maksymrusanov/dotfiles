@@ -78,8 +78,12 @@ bindsym Mod1 +f exec nautilus
 bindsym Mod1 +t exec Telegram
 #bind docker
 bindsym Mod1+d exec docker desktop start
-#bind chromium
-bindsym Mod1+c exec chromium
+#bind browser
+bindsym Mod1+c exec  chromium
+exec_always  chromium
+
+
+
 #bind pycharm 
 bindsym Mod1+p exec pycharm
 #bind VS code
@@ -100,12 +104,13 @@ bindsym Mod4+$left focus left
 bindsym Mod4+$down focus down
 bindsym Mod4+$up focus up
 bindsym Mod4+$right focus right
-
 # alternatively, you can use the cursor keys:
 bindsym Mod4+Left focus left
 bindsym Mod4+Down focus down
 bindsym Mod4+Up focus up
 bindsym Mod4+Right focus right
+# night light 
+exec --no-startup-id redshift -P -O 3200
 
 # move focused window
 bindsym Mod4+Shift+$left move left
@@ -118,7 +123,8 @@ bindsym Mod4+Shift+Left move left
 bindsym Mod4+Shift+Down move down
 bindsym Mod4+Shift+Up move up
 bindsym Mod4+Shift+Right move right
-
+#screenshot
+bindsym ctrl+Mod1+p exec --no-startup-id maim --select "/home/$USER/Pictures/$(date).png"
 
 
 # enter fullscreen mode for the focused container
@@ -163,6 +169,7 @@ bindsym Mod4+4 workspace number $ws4
 bindsym Mod4+5 workspace number $ws5
 
 
+ 
 # move focused container to workspace
 bindsym Mod4+Shift+1 move container to workspace number $ws1
 bindsym Mod4+Shift+2 move container to workspace number $ws2
