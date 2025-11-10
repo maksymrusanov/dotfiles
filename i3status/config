@@ -23,15 +23,23 @@
 general {output_format = "i3bar"
 	colors = false
         interval =1
+        
 }
 order+="volume_master"
 order+="cpu_usage"
 order += "memory"
 order += "disk /"
 order+="tztime_local"
+order+="battery 1"
+
+
+battery 1 {
+        format = "BATT:%percentage"
+	integer_battery_capacity = true
+}
 
 memory {
-        format = "RAM: %used"
+        format = "RAM:%used"
          threshold_degraded = "10%"
         format_degraded = "MEMORY: %free"
 	align ="center"
@@ -40,23 +48,24 @@ memory {
 tztime local {
 	align = "center"
 	timezone = "Europe/London"
-        format = "%a %d %b %y, %H:%M  "
+        format = "%a %d %b %y, %H:%M"
 }
 disk "/" {
-    format = "DISK: %free"
+    format = "DISK:%free"
 }
 cpu_usage{
-	format="CPU: %usage"}
+	format="CPU:%usage"}
 
 volume master {
         format = "VOLUME:%volume"
         format_muted = "VOLUME: muted"
         device = "default"
         mixer = "Master"
-        mixer_idx = 0
-}
+        mixer_idx = 0}
 
 
+
+        
 
 
 

@@ -1,15 +1,16 @@
-! Set the font (you can adjust size here)
+! Set the font (you can adjust size here) 2 ! Font 3 XTerm*faceName: Monospace 4 XTerm*faceSize: ! Set the font (you can adjust size here)
 ! Font
 XTerm*faceName: Monospace
-XTerm*faceSize: 20
 
+XTerm*faceSize: 20
 ! Colors
 XTerm*background: #000000
 XTerm*foreground: #FFFFFF
 XTerm*cursorColor: #f8f8f0
 
-
 ! Misc
 XTerm*saveLines: 10000
-XTerm*cursorBlink: true         ! makes cursor blink
-XTerm*cursorShape: block 
+XTerm*cursorBlink: true        
+XTerm*cursorShape: block
+
+Xcursor.size: 32
