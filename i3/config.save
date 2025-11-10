@@ -61,9 +61,7 @@ floating_modifier Mod4
 tiling_drag modifier titlebar
 
 # start a terminal
-bindsym Mod4+Return exec kitty tmux
-
-
+bindsym Mod4+Return exec xterm
 
 # kill focused window
 bindsym Mod1+F4 kill
@@ -82,26 +80,22 @@ bindsym Mod1 +t exec Telegram
 bindsym Mod1+d exec docker desktop start
 #bind browser
 bindsym Mod1+c exec  chromium
-
-#set background to picture
-exec --no-startup-id feh --bg-fill ~/.config/i3/w.jpg
-
-#trans bg
-exec_always --no-startup-id picom --config ~/.config/picom.conf
+exec_always  chromium
+# bind Soundcloud
+bindsym Mod1+s exec s
 
 
 #bind pycharm 
 bindsym Mod1+p exec pycharm
 #bind VS code
-bindsym Mod1+n exec nvim ~Documents
-
+bindsym Mod1+v exec code
 # switch keymap
 exec_always --no-startup-id setxkbmap -model pc104 -layout "us,ru" -variant ",," -option "grp:win_space_toggle"
 
 
 
 #bind process monitor
-bindsym Mod4+Escape exec kitty -e htop
+bindsym Mod4+Escape exec xterm -e htop
 #copy/paste
 bindsym Mod4+c exec xclip -selection clipboard
 bindsym Mod4+v exec xdotool type --clearmodifiers "$(xclip -o -selection clipboard)"
@@ -186,9 +180,9 @@ bindsym Mod4+Shift+3 move container to workspace number $ws3
 bindsym Mod4+Shift+4 move container to workspace number $ws4
 bindsym Mod4+Shift+5 move container to workspace number $ws5
 #put window in special workplace
-for_window [class="kitty"] move to workspace $ws1  
+for_window [class="XTerm"] move to workspace $ws1  
 for_window [class="Chromium"] move to workspace $ws2
-for_window [class="nvim"] move to workspace $ws3
+for_window [class="Code"] move to workspace $ws3
 for_window [class="pycharm"] move to workspace $ws3
 for_window [class="Telegram"] move to workspace $ws4
 for_window [class="Docker Desktop"] move to workspace $ws5 
@@ -230,8 +224,8 @@ bar {tray_output             primary
         status_command i3status
         
 	position top
-	height 25
-    separator_symbol":|:"
+	height 30
+	separator_symbol":|:"
 	
 colors {
 separator #FF0000
@@ -249,22 +243,27 @@ title_align center
 client.focused          #FF0000  #FF0000  #000000  #000000   #FF0000
 client.focused_inactive #000000  #000000  #FF0000  #000000   #000000
 
-client.background       photo_2025-08-19_12-34-04.jpg
+client.background       #000000
+
 client.background       #ffffff
+#set background to black 
+exec --no-startup-id xsetroot -solid #3a0000
+
 client.focused          #FF0000  #FF0000 #000000 #FF0000   #FF0000
 client.focused_inactive #000000 #000000 #FF0000 #000000 #000000
 client.unfocused        #000000 #000000 #FF0000 #000000 #000000
 client.urgent           #2f343a #900000 #FF0000  #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-client.background       #FF0000 #FF0000 #FF0000 #FF0000 #FF0000
+client.background       #FF0000 #000000 #000000 #000000 #000000
 #set external  monitor to up pos
 exec --no-startup-id xrandr --output HDMI-A-0 --auto --above eDP
 
 
-
+#set background to black 
+exec --no-startup-id xsetroot -solid #3a0000
 for_window [class="^.*"] border pixel 5
 new_window 1pixel
-
+exec --no-startup-id xset b off
 #bind for reboot
 bindsym ctrl+F12 exec reboot
 #bind for poweroff
