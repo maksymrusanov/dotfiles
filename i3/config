@@ -84,7 +84,7 @@ bindsym Mod1+d exec docker desktop start
 bindsym Mod1+c exec  chromium
 
 #set background to picture
-exec --no-startup-id feh --bg-fill ~/.config/i3/w.jpg
+exec --no-startup-id feh --bg-fill ~/.config/i3/cyber_girl.jpg
 
 #trans bg
 exec_always --no-startup-id picom --config ~/.config/picom.conf
