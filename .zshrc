@@ -107,6 +107,6 @@ export PATH="$HOME/bin:$PATH"
 alias update='sudo pacman -Syyu && yay -Syyu'
 alias emptytrash='rm -rf ~/.local/share/Trash/files/* ~/.local/share/Trash/info/*'
 alias rasp='ssh max@192.168.0.46 '
-alias monitor_on='xrandr --output HDMI-A-0 --mode 1920x1080 --above eDP --primary'
+alias monitor_on='xrandr --output HDMI-A-0 --mode 1920x1080 --right-of eDP --primary'
 alias monitor_off='xrandr --output HDMI-A-0 --off'
 
