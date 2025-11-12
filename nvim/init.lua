@@ -29,3 +29,4 @@ local state_dir = vim.fn.stdpath('state')
 vim.opt.directory = state_dir .. '/swap//'
 vim.opt.backupdir = state_dir .. '/backup//'
 vim.opt.undodir = state_dir .. '/undo//'
+
