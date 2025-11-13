@@ -13,3 +13,9 @@ vim.keymap.set({ "v" }, "<Leader>y", '"+y')  -- E.g: <leader>yy will yank curren
 vim.keymap.set({ "v" }, "<Leader>Y", '"+y$') -- E.g: <leader>yy will yank current line to os clipboard
 vim.keymap.set({ "n" }, "<Leader>p", '"+p')  -- Paste after cursor from clipboard
 vim.keymap.set({ "n" }, "<Leader>P", '"+P')  -- Paste before cursor from clipboard
+-- Disable arrow keys in normal, insert, and visual modes
+vim.keymap.set({'n'}, '<Up>', '<Nop>')
+vim.keymap.set({'n'}, '<Down>', '<Nop>')
+vim.keymap.set({'n'}, '<Left>', '<Nop>')
+vim.keymap.set({'n'}, '<Right>', '<Nop>')
+

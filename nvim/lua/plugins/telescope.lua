@@ -7,7 +7,7 @@ return {
     },
     cmd = "Telescope",
     keys = {
-      { "<Leader>ff", "<CMD>Telescope find_files<CR>",  mode = { "n", "v" }, desc = "Telescope find file" },
+      { "<C-p>", "<CMD>Telescope find_files<CR>",  mode = { "n", "v" }, desc = "Telescope find file" },
       
       { "<Leader>fg", "<CMD>Telescope live_grep<CR>",   mode = { "n", "v" }, desc = "Telescope live grep" },
       { "<Leader>fc", "<CMD>Telescope commands<CR>",    mode = { "n", "v" }, desc = "Telescope commands" },
