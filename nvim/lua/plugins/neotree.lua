@@ -17,7 +17,8 @@ return {
       close_if_last_window = true,
       popup_border_style = "rounded",
         window = {
-          position = "left",},
+          position = "left",
+      width = 25,},
       default_component_configs = {
         container = {
           enable_character_fade = true,
