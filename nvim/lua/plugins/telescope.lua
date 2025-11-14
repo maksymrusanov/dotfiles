@@ -8,7 +8,6 @@ return {
     cmd = "Telescope",
     keys = {
       { "<C-p>", "<CMD>Telescope find_files<CR>",  mode = { "n", "v" }, desc = "Telescope find file" },
-      
       { "<Leader>fg", "<CMD>Telescope live_grep<CR>",   mode = { "n", "v" }, desc = "Telescope live grep" },
       { "<Leader>fc", "<CMD>Telescope commands<CR>",    mode = { "n", "v" }, desc = "Telescope commands" },
       { "<Leader>fk", "<CMD>Telescope keymaps<CR>",     mode = { "n", "v" }, desc = "Telescope keymaps" },
@@ -29,7 +28,7 @@ return {
             layout_config = { height=1, width=1 },
         },
         vertical = {
-          width = 0.3
+          width = 0.1
         },
         extensions = {
           ["ui-select"] = {
