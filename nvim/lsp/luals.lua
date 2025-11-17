@@ -1,13 +1,6 @@
-vim.lsp.config('luals', {
+---@type vim.lsp.Config
+return {
   cmd = { 'lua-language-server' },
   filetypes = { 'lua' },
-  root_markers = { '.luarc.json', '.luarc.jsonc', '.stylua.toml', 'stylua.toml', '.luacheckrc', '.git' },
-  -- https://raw.githubusercontent.com/LuaLS/vscode-lua/master/setting/schema.json
-  settings = {
-    Lua = {
-      runtime = {
-        version = 'LuaJIT',
-      },
-    },
-  },
-})
+  root_markers = { '.luarc.json', '.luarc.jsonc' },
+}
