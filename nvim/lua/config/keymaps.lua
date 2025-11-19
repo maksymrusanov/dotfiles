@@ -1,5 +1,4 @@
 --  Помощь не нужна, никто не услышыт твой крик
-vim.keymap.set({ "n", "v", "i" }, "<F1>", "<Nop>")
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 -- Переключение буферов через []

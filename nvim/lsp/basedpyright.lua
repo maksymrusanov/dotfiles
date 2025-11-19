@@ -4,7 +4,7 @@ return {
   filetypes = { 'python' },
   root_markers = {
     'pyproject.toml',
-    'setup.py',
+    'main.py',
     'setup.cfg',
     'requirements.txt',
     'Pipfile',
