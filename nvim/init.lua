@@ -27,7 +27,6 @@ require("lazy").setup({
   checker = { enabled = false, notify = false },
   install = {}, --colorscheme = { "NeoSolarized" } },
 })
-
 require("config.options")
 require("config.keymaps")
 require("config.lsp")
