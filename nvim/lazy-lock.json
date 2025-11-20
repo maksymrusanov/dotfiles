@@ -23,7 +23,7 @@
   "mini.icons": { "branch": "main", "commit": "ff2e4f1d29f659cc2bad0f9256f2f6195c6b2428" },
   "moonfly": { "branch": "master", "commit": "930f33f2e91225afb0491d259cf151ea9eca6ca3" },
   "multiple-cursors.nvim": { "branch": "main", "commit": "1ac15d047a4b265cc2389957bcc56ee561b29e02" },
-  "neo-tree.nvim": { "branch": "main", "commit": "0bf326c601063a6518aa9a039b71351debb83d2f" },
+  "neo-tree.nvim": { "branch": "main", "commit": "a981ef287503c668434bffa78071d5b9ff92c12f" },
   "neotest": { "branch": "master", "commit": "deadfb1af5ce458742671ad3a013acb9a6b41178" },
   "neotest-python": { "branch": "master", "commit": "b0d3a861bd85689d8ed73f0590c47963a7eb1bf9" },
   "neovim-project": { "branch": "main", "commit": "f42fb8747409c8b637f37f9ffbcf61851bd132fc" },
