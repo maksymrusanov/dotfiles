@@ -38,7 +38,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
     vim.keymap.set("n", "<leader>tdR", function()
       vim.lsp.enable("ruff", true)
-    end, { desc = "toggle ruff on"  })
+    end, { desc = "toggle ruff on" })
   end,
 })
 
@@ -63,4 +63,4 @@ vim.lsp.config("*", {
 })
 
 -- Enable each language server by filename under the lsp/ folder
-vim.lsp.enable({ "basedpyright", "luals","css_lsp", "htmx"})
+vim.lsp.enable({ "basedpyright", "luals", "css_lsp", "htmx", "emmet" })
