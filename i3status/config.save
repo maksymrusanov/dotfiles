@@ -1,0 +1,67 @@
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+# i3status configuration file.
+# see "man i3status" for documentation.
+
+# It is important that this file is edited as UTF-8.
+# The following line should contain a sharp s:
+# ß
+# If the above line is not correctly displayed, fix your editor first!
+
+general {output_format = "i3bar"
+ 	colors = false
+        interval =1
+}
+order+="volume_master"
+order+="tztime_local"
+order += "wireless _first_"
+order+="cpu_usage"
+order += "memory"
+order += "disk /"
+
+memory {
+        format = "RAM: %used of %free"
+         threshold_degraded = "10%"
+        format_degraded = "MEMORY: %free"
+	align ="center"
+}
+
+tztime local {
+	align = "center"
+	timezone = "Europe/London"
+        format = "%a %d %b %Y, %H:%M"
+}
+disk "/" {
+    format = "DISK: %free   "
+}
+cpu_usage{
+	format="CPU: %usage"}
+
+volume master {
+        format = "VOLUME: %volume"
+        format_muted = "VOLUME: mutedD"
+        device = "default"
+        mixer = "Master"
+        mixer_idx = 0
+}
+wireless _first_ {
+        format_up = "WIFI: %quality"
+        format_down = "W: down"
+}
+
+
+
+
+
