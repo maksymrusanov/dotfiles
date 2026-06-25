@@ -1,60 +1,79 @@
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  event = "User FilePost",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons",
-    "MunifTanjim/nui.nvim",
-  },
-  config = function()
-    require("neo-tree").setup({
-      close_if_last_window = true,
-      popup_border_style = "rounded",
-        window = {
-          position = "left",
-        },
-       filesystem = {
-    filtered_items = {
-      visible = true, -- This is what you want: If you set this to `true`, all "hide" just mean "dimmed out"
-      hide_dotfiles = false,
-      hide_gitignored = true,
-    }},
-      default_component_configs = {
-        container = {
-          enable_character_fade = true,
-          modified = {
-            symbol = "✚",
-            highlight = "NeoTreeModified",
-          },
-          name = {
-            trailing_slash = false,
-            use_git_status_colors = true,
-            highlight = "NeoTreeFileName",
-          },
+	"nvim-neo-tree/neo-tree.nvim",
+	cmd = "Neotree",
 
-          git_status = {
-            symbols = {
-              -- Change type
-              added = "A",
-              modified = "M",
-              deleted = "D",
-              renamed = "R",
-              -- Status type
-              untracked = "U",
-              ignored = "I",
-              unstaged = "UNS",
-              staged = "S",
-              conflict = "C",
-            },
-          },
-        },
-      },
-    })
-  end,
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"nvim-tree/nvim-web-devicons",
+		"MunifTanjim/nui.nvim",
+	},
 
-  cmd = "Neotree",
+	config = function()
+		local neotree = require("neo-tree")
 
-  keys = {
-    { "<C-t>", "<CMD>Neotree toggle<CR>", mode = { "n", "v" }, { desc = "Neotree" } },
-  },
+		neotree.setup({
+			close_if_last_window = true,
+			popup_border_style = "rounded",
+
+			filesystem = {
+				filtered_items = {
+					hide_dotfiles = false,
+					hide_hidden = false,
+				},
+				follow_current_file = {
+					enabled = true,
+					leave_dirs_open = false,
+				},
+				hijack_netrw_behavior = "open_current",
+			},
+
+			window = {
+				width = 40,
+			},
+
+			default_component_configs = {
+				container = { enable_character_fade = false },
+				modified = { symbol = "✚" },
+
+				name = {
+					trailing_slash = false,
+					use_git_status_colors = true,
+				},
+
+				git_status = {
+					symbols = {
+						added = "+",
+						modified = "M",
+						deleted = "D",
+						renamed = "R",
+						untracked = "U",
+						ignored = "I",
+						unstaged = "-",
+						staged = "S",
+						conflict = "C",
+					},
+				},
+			},
+		})
+	end,
+
+	keys = {
+		{
+			"<C-t>",
+			function()
+				local file = vim.api.nvim_buf_get_name(0)
+				local path = file ~= "" and vim.fs.dirname(file) or vim.loop.cwd()
+
+				require("neo-tree.command").execute({
+					toggle = true,
+					position = "right",
+					hide_dotfiles = false,
+					hide_hidden = false,
+					dir = path,
+				})
+			end,
+			mode = { "n", "v" },
+			desc = "Neo-tree current file folder",
+		},
+	},
 }

@@ -1,41 +1,30 @@
-vim.opt.showcmd = true
 vim.opt.relativenumber = true
 
-vim.opt.nu = true
-vim.opt.tabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
-vim.opt.laststatus = 2
-vim.opt.hlsearch = true
-vim.opt.incsearch = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
+-- Wrapping
+vim.opt.wrap = true
+vim.opt.linebreak = true
+vim.opt.breakindent = true
 
--- backup
-vim.opt.backup = false
-vim.opt.writebackup = false
-
--- Having longer updatetime (default is 4000 ms = 4s) leads to noticeable
--- delays and poor user experience
-vim.opt.updatetime = 700
-
--- Always show the signcolumn, otherwise it would shift the text each time
--- diagnostics appeared/became resolved
+-- UI
+vim.opt.cursorline = false
 vim.opt.signcolumn = "yes"
+vim.opt.termguicolors = true
 
--- spaces
-vim.opt.list = true
+-- Indentation
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 4
+vim.opt.tabstop = 4
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 
-vim.g.termguicolors = true
-vim.g.loaded_perl_provider = 0
-vim.g.loaded_node_provider = 0
--- command autocomplete
-vim.g.wildmenu = true
-vim.opt.listchars = "tab:»·,trail:·,nbsp:·"
-vim.diagnostic.config({ virtual_text = true})
+-- Navigation
+vim.opt.scrolloff = 8
 
--- views can only be fully collapsed with the global statusline
-vim.opt.laststatus = 3
+-- Search
+vim.opt.incsearch = true
 
+-- Files
+vim.opt.undofile = true
 
-vim.lsp.set_log_level("debug")
+-- Performance
+vim.opt.updatetime = 50

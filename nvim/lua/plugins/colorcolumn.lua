@@ -1,6 +1,1 @@
-return {
-		"lukas-reineke/virt-column.nvim",
-		config = function()
-			require("virt-column").setup()
-		end,
-	}
+return { "lukas-reineke/virt-column.nvim", opts = {} }
