@@ -17,9 +17,11 @@ bindsym Mod1+F4 kill
 bindsym $mod+d exec rofi -show drun
 
 # apps
+
 bindsym Mod1+f exec nautilus
 bindsym Mod1+t exec Telegram
 bindsym Mod1+s exec firefox
+
 # ==========================
 # Clipboard
 # ==========================
@@ -46,7 +48,6 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-
 # ==========================
 # Media
 # ==========================
@@ -66,13 +67,11 @@ set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 
-
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
-
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -80,19 +79,19 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 
-
 # automatic workspace placement
+
 for_window [class="kitty"] move container to workspace $ws1
 for_window [app_id="firefox_firefox"] move container to workspace $ws2
 for_window [class="steam"] move container to workspace $ws3
 for_window [class="discord"] move container to workspace $ws4
 for_window [class="Telegram"] move container to workspace $ws4
-
+# everything else
+for_window [class="^(?!kitty$|steam$|discord$|Telegram$).*"] move container to workspace $ws5
 
 # ==========================
 # Focus
 # ==========================
-workspace_auto_back_and_forth yes
 focus_follows_mouse yes
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -109,28 +108,25 @@ bindsym $mod+Right focus right
 
 # move windows
 
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
 
 
 # fullscreen
 
 bindsym $mod+f fullscreen toggle
 
-
 # floating
 
 bindsym $mod+Shift+space floating toggle
-
 
 # ==========================
 # Screenshot
 # ==========================
 
 bindsym Ctrl+Mod1+p exec grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png
-
 
 # ==========================
 # Brightness
@@ -139,13 +135,11 @@ bindsym Ctrl+Mod1+p exec grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
-
 # ==========================
 # Background
 # ==========================
 
 output * bg ~/.config/sway/cyber_girl.jpg fill
-
 
 # ==========================
 # Startup
@@ -155,12 +149,12 @@ exec_always nm-applet
 exec_always mako
 exec_always swayidle
 
-
-# ==========================
-# Bar
 # ==========================
 # Waybar
+# ==========================
+
 exec_always waybar
+
 # ==========================
 # Window style
 # ==========================
@@ -171,11 +165,8 @@ client.focused          #ff0000 #ff0000 #000000 #ff0000
 client.focused_inactive #000000 #000000 #ff0000 #000000
 client.unfocused        #000000 #000000 #ff0000 #000000
 
-
 # reload
-
 bindsym $mod+Shift+c reload
 
 # restart sway
-
 bindsym $mod+Shift+r restart
