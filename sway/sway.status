@@ -1,0 +1,31 @@
+general {
+    colors = true
+    interval = 1
+}
+
+order += "volume master"
+order += "cpu_usage"
+order += "memory"
+order += "disk /"
+order += "tztime local"
+
+volume master {
+    format = "VOL %volume"
+    format_muted = "VOL MUTED"
+}
+
+cpu_usage {
+    format = "CPU %usage"
+}
+
+memory {
+    format = "RAM %used"
+}
+
+disk "/" {
+    format = "SSD %avail"
+}
+
+tztime local {
+    format = "%a %d %b %H:%M"
+}

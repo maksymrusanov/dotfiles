@@ -1,0 +1,54 @@
+{
+    "layer": "top",
+    "position": "top",
+    "height": 22,
+
+    "modules-left": [
+        "sway/workspaces"
+    ],
+
+    "modules-center": [
+        "clock"
+    ],
+
+    "modules-right": [
+        "tray",
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "battery"
+    ],
+
+    "sway/workspaces": {
+        "format": "{name}",
+        "disable-scroll": true,
+        "all-outputs": true
+    },
+
+    "clock": {
+        "format": "{:%a %d %b %y, %H:%M}",
+        "timezone": "Europe/London"
+    },
+
+    "pulseaudio": {
+        "format": "VOLUME:{volume}%",
+        "format-muted": "VOLUME: muted"
+    },
+
+    "cpu": {
+        "interval": 1,
+        "format": "CPU:{usage}%"
+    },
+
+    "memory": {
+        "interval": 1,
+        "format": "RAM:{used:0.1f}G"
+    },
+
+
+    "battery": {
+        "bat": "BAT1",
+        "interval": 60,
+        "format": "BATT:{capacity}%"
+    }
+}

@@ -1,0 +1,180 @@
+# ==========================
+# Sway config
+# ==========================
+exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+set $mod Mod4
+
+font pango:JetBrains Mono 12
+
+# terminal
+bindsym $mod+Return exec kitty -e tmux
+
+# close window
+bindsym Mod1+F4 kill
+
+# launcher
+bindsym $mod+d exec rofi -show drun
+
+# apps
+bindsym Mod1+f exec nautilus
+bindsym Mod1+t exec Telegram
+bindsym Mod1+s exec firefox
+# ==========================
+# Clipboard
+# ==========================
+
+bindsym $mod+c exec wl-copy
+bindsym $mod+v exec wl-paste
+
+# ==========================
+# Keyboard layout
+# ==========================
+
+input * {
+    xkb_layout gb,ru
+    xkb_options grp:win_space_toggle
+}
+
+
+# ==========================
+# Audio
+# ==========================
+
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+
+# ==========================
+# Media
+# ==========================
+
+bindsym Control+Right exec playerctl next
+bindsym Control+Left exec playerctl previous
+bindsym Control+space exec playerctl play-pause
+
+
+# ==========================
+# Workspaces
+# ==========================
+
+set $ws1 "1:CODE"
+set $ws2 "2:WEB"
+set $ws3 "3"
+set $ws4 "4"
+set $ws5 "5"
+
+
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+
+
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+
+
+# automatic workspace placement
+for_window [class="kitty"] move container to workspace $ws1
+for_window [app_id="firefox_firefox"] move container to workspace $ws2
+for_window [app_id="Steam"] move container to workspace $ws3
+for_window [app_id="Discord"] move container to workspace $ws4
+for_window [class="Telegram"] move container to workspace $ws4
+
+
+# ==========================
+# Focus
+# ==========================
+
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+
+# arrows too
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+
+# move windows
+
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+
+# fullscreen
+
+bindsym $mod+f fullscreen toggle
+
+
+# floating
+
+bindsym $mod+Shift+space floating toggle
+
+
+# ==========================
+# Screenshot
+# ==========================
+
+bindsym Ctrl+Mod1+p exec grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png
+
+
+# ==========================
+# Brightness
+# ==========================
+
+bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+
+
+# ==========================
+# Background
+# ==========================
+
+output * bg ~/.config/sway/cyber_girl.jpg fill
+
+
+# ==========================
+# Startup
+# ==========================
+
+exec_always nm-applet
+exec_always mako
+exec_always swayidle
+
+
+# ==========================
+# Bar
+# ==========================
+# Waybar
+exec_always waybar
+# ==========================
+# Window style
+# ==========================
+
+default_border pixel 5
+
+client.focused          #ff0000 #ff0000 #000000 #ff0000
+client.focused_inactive #000000 #000000 #ff0000 #000000
+client.unfocused        #000000 #000000 #ff0000 #000000
+
+
+# reload
+
+bindsym $mod+Shift+c reload
+
+# restart sway
+
+bindsym $mod+Shift+r restart
