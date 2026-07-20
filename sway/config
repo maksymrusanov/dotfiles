@@ -6,9 +6,10 @@ exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 set $mod Mod4
 
 font pango:JetBrains Mono 12
-
+#cursor 
+seat seat0 xcursor_theme Bibata-Modern-Amber 15
 # terminal
-bindsym $mod+Return exec kitty -e tmux
+bindsym $mod+Return exec ghostty
 
 # close window
 bindsym Mod1+F4 kill
@@ -83,12 +84,10 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 
 for_window [class="kitty"] move container to workspace $ws1
 for_window [app_id="firefox_firefox"] move container to workspace $ws2
-for_window [class="steam"] move container to workspace $ws3
+for_window [class="steam"] move container to workspace $ws4
 for_window [class="discord"] move container to workspace $ws4
 for_window [class="Telegram"] move container to workspace $ws4
-# everything else
-for_window [class="^(?!kitty$|steam$|discord$|Telegram$).*"] move container to workspace $ws5
-
+for_window [app_id="Docker Desktop"] move container to workspace $ws5
 # ==========================
 # Focus
 # ==========================
@@ -136,7 +135,7 @@ bindsym XF86MonBrightnessUp exec brightnessctl set +5%
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 
 # ==========================
-# Background
+# wallpaper
 # ==========================
 
 output * bg ~/.config/sway/cyber_girl.jpg fill
@@ -165,8 +164,13 @@ client.focused          #ff0000 #ff0000 #000000 #ff0000
 client.focused_inactive #000000 #000000 #ff0000 #000000
 client.unfocused        #000000 #000000 #ff0000 #000000
 
-# reload
-bindsym $mod+Shift+c reload
+# reboot
+bindsym Ctrl+F12 exec systemctl reboot
 
+# poweroff
+bindsym Ctrl+Delete exec systemctl poweroff
+
+# reload
+bindsym $mod+Shift+c reload 
 # restart sway
 bindsym $mod+Shift+r restart

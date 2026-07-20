@@ -7,15 +7,20 @@
         "sway/workspaces"
     ],
 
+"modules-right": [
+    "tray",
+    "sway/language",
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "battery",
+    "clock"
+],
 
-    "modules-right": [
-        "tray",
-        "pulseaudio",
-        "cpu",
-        "memory",
-        "battery",
-        "clock"
-    ],
+"sway/language": {
+    "format": "{short}",
+    "tooltip": false
+},
 
     "sway/workspaces": {
     "format": "{name}",
