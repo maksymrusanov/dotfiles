@@ -7,26 +7,26 @@
         "sway/workspaces"
     ],
 
-    "modules-center": [
-        "clock"
-    ],
 
     "modules-right": [
         "tray",
         "pulseaudio",
         "cpu",
         "memory",
-        "battery"
+        "battery",
+        "clock"
     ],
 
     "sway/workspaces": {
-        "format": "{name}",
-        "disable-scroll": true,
-        "all-outputs": true
-    },
-
+    "format": "{name}",
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format-icons": {
+        "default": ""
+    }
+},
     "clock": {
-        "format": "{:%a %d %b %y, %H:%M}",
+        "format": "{:%H:%M}",
         "timezone": "Europe/London"
     },
 
