@@ -7,29 +7,31 @@
         "sway/workspaces"
     ],
 
-"modules-right": [
-    "tray",
-    "sway/language",
-    "pulseaudio",
-    "cpu",
-    "memory",
-    "battery",
-    "clock"
-],
+    "modules-right": [
+        "tray",
+        "sway/language",
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "battery",
+        "clock",
+        "custom/wifi"
+    ],
 
-"sway/language": {
-    "format": "{short}",
-    "tooltip": false
-},
+    "sway/language": {
+        "format": "{short}",
+        "tooltip": false
+    },
 
     "sway/workspaces": {
-    "format": "{name}",
-    "disable-scroll": true,
-    "all-outputs": true,
-    "format-icons": {
-        "default": ""
-    }
-},
+        "format": "{name}",
+        "disable-scroll": true,
+        "all-outputs": true,
+        "format-icons": {
+            "default": ""
+        }
+    },
+
     "clock": {
         "format": "{:%H:%M}",
         "timezone": "Europe/London"
@@ -50,10 +52,14 @@
         "format": "RAM:{used:0.1f}G"
     },
 
-
     "battery": {
         "bat": "BAT1",
         "interval": 60,
         "format": "BATT:{capacity}%"
-    }
-}
+    },
+    "custom/wifi": {
+    "exec": "~/.config/waybar/scripts/wifi.sh",
+    "interval": 5,
+    "return-type": "json",
+    "on-click": "~/.config/waybar/scripts/wifi-menu.sh"
+}}

@@ -26,3 +26,19 @@ window#waybar {
     padding: 0 5px;
     color: #ff0000;
 }
+* {
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
+tooltip {
+    background: #101018;
+    border-radius: 12px;
+    padding: 10px;
+    border: none;
+}
+
+tooltip label {
+    color: #ffffff;
+    font-family: "JetBrainsMono Nerd Font";
+    font-size: 14px;
+}
