@@ -10,7 +10,7 @@ font pango:JetBrains Mono 12
 #cursor 
 seat seat0 xcursor_theme Bibata-Modern-Amber 15
 # terminal
-bindsym $mod+Return exec kitty
+bindsym $mod+Return exec ghostty
 
 # close window
 bindsym Mod1+F4 kill
@@ -21,7 +21,7 @@ bindsym $mod+d exec rofi -show drun
 # apps
 
 bindsym Mod1+f exec nautilus
-bindsym Mod1+t exec Telegram
+bindsym Mod1+t exec telegram-desktop
 bindsym Mod1+s exec firefox
 
 # ==========================
@@ -87,7 +87,7 @@ for_window [app_id="kitty"] move container to workspace $ws1
 for_window [app_id="firefox_firefox"] move container to workspace $ws2
 for_window [class="steam"] move container to workspace $ws4
 for_window [class="discord"] move container to workspace $ws4
-for_window [class="Telegram"] move container to workspace $ws4
+for_window [app_id="telegram-desktop_telegram-desktop"] move container to workspace $ws4
 for_window [app_id="Docker Desktop"] move container to workspace $ws5
 # ==========================
 # Focus
@@ -123,18 +123,16 @@ bindsym $mod+f fullscreen toggle
 bindsym $mod+Shift+space floating toggle
 
 # ==========================
-# Screenshot
+# screenshot
 # ==========================
 
-bindsym Ctrl+Mod1+p exec grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png
-
+bindsym Ctrl+Mod1+p exec -- mkdir -p ~/Pictures && grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png
 # ==========================
 # Brightness
 # ==========================
-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+# Brightness
+bindsym XF86MonBrightnessUp exec brightnessctl set 5%+
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-
 # ==========================
 # wallpaper
 # ==========================

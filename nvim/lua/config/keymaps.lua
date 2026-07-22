@@ -21,10 +21,12 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Save
-vim.keymap.set({ "n", "v", "i" }, "<C-s>", "<Esc><cmd>w<CR>", {
-	desc = "Save file",
+vim.keymap.set({ "n", "v", "i" }, "<C-s>", function()
+    vim.cmd("write")
+    require("conform").format({ async = true, lsp_fallback = true })
+end, {
+    desc = "Save and format file",
 })
-
 -- Clipboard
 vim.keymap.set("n", "Y", '"+yy', {
 	desc = "Copy line to system clipboard",
