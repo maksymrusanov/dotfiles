@@ -13,16 +13,9 @@ map("n", "=ap", "ma=ap'a", {
 -- ─────────────────────────────────────────────
 -- Save + format
 -- ─────────────────────────────────────────────
-map({ "n", "v", "i" }, "<C-s>", function()
-	vim.cmd("write")
-	require("conform").format({
-		async = true,
-		lsp_fallback = true,
-	})
-end, {
-	desc = "Save and format",
+vim.keymap.set({ "n", "v", "i" }, "<C-s>", "<Esc><cmd>w<CR>", {
+	desc = "Save file",
 })
-
 -- ─────────────────────────────────────────────
 -- Search
 -- ─────────────────────────────────────────────
