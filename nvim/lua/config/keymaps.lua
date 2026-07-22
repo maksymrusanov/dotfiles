@@ -21,18 +21,22 @@ vim.keymap.set("n", "<C-k>", "<C-w>k")
 vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Save
-vim.keymap.set({ "n", "v", "i" }, "<C-s>", function()
+vim.keymap.set("n", "<C-s>", function()
     vim.cmd("write")
     require("conform").format({ async = true, lsp_fallback = true })
 end, {
     desc = "Save and format file",
 })
+
+vim.keymap.set("i", "<C-s>", "<Esc><cmd>w<CR>", {
+    desc = "Save file",
+})
 -- Clipboard
 vim.keymap.set("n", "Y", '"+yy', {
-	desc = "Copy line to system clipboard",
+    desc = "Copy line to system clipboard",
 })
 vim.keymap.set("v", "Y", '"+y', {
-	desc = "Copy selection to system clipboard",
+    desc = "Copy selection to system clipboard",
 })
 
 -- Disable arrow keys
@@ -46,36 +50,36 @@ vim.keymap.set("n", "Q", "<Nop>")
 
 -- Search & replace word under cursor
 vim.keymap.set(
-	"n",
-	"<leader>s",
-	[[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-	{ desc = "Replace word under cursor" }
+    "n",
+    "<leader>s",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+    { desc = "Replace word under cursor" }
 )
 
 -- Select entire buffer
 vim.keymap.set("n", "<leader>a", "ggVG", {
-	desc = "Select entire buffer",
+    desc = "Select entire buffer",
 })
 
 -- Delete without yanking
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], {
-	desc = "Delete without copying",
+    desc = "Delete without copying",
 })
 
 -- Escape
 vim.keymap.set("i", "jk", "<Esc>", {
-	desc = "Exit insert mode",
+    desc = "Exit insert mode",
 })
 
 vim.keymap.set("n", "<leader>fs", "<cmd>FzfLua lsp_document_symbols<CR>", {
-	desc = "Find document symbols",
+    desc = "Find document symbols",
 })
 -- Cleanup
 vim.keymap.set("n", "<leader>cw", function()
-	vim.cmd([[g/^\s*$/d]])
+    vim.cmd([[g/^\s*$/d]])
 end, {
-	desc = "Remove empty lines",
+    desc = "Remove empty lines",
 })
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], {
-	desc = "Exit terminal mode",
+    desc = "Exit terminal mode",
 })
