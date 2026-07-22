@@ -1,6 +1,11 @@
+-- ─────────────────────────────────────────────
+-- Core
+-- ─────────────────────────────────────────────
+
 vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-require("config.options")
-require("config.keymaps")
-require("config.plugins")
-require("config.lsp_settings")
+vim.g.maplocalleader = " "
+
+require("options")
+require("keymaps")
+require("plugins")
+require("lsp")
