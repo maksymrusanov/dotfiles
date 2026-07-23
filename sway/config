@@ -1,6 +1,11 @@
 # ==========================
 # Sway config
 # ==========================
+input "2362:12305:ASUP1208:00_093A:3011_Touchpad" {
+    tap enabled
+    tap_button_map lrm
+    natural_scroll enabled
+}
 exec dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
 exec systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
 xwayland enable
