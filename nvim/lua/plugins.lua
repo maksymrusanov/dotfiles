@@ -316,7 +316,6 @@ require("colorizer").setup({
 
 vim.g.fff = {
 	lazy_sync = true,
-	debug = false,
 }
 
 vim.api.nvim_create_autocmd("PackChanged", {
