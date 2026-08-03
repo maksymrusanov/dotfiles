@@ -88,19 +88,30 @@ vim.api.nvim_set_hl(0, "LineNr", {
 -- ─────────────────────────────────────────────
 -- Neo-tree
 -- ─────────────────────────────────────────────
-
 require("neo-tree").setup({
 	window = {
 		position = "right",
+		mappings = {
+			["<BS>"] = "close_node",
+		},
 	},
 
 	filesystem = {
+		bind_to_cwd = true,
+		cwd_target = {
+			sidebar = "tab",
+			current = "window",
+		},
+
 		filtered_items = {
 			hide_dotfiles = false,
 		},
+
+		follow_current_file = {
+			enabled = true,
+		},
 	},
 })
-
 -- ─────────────────────────────────────────────
 -- Autopairs
 -- ─────────────────────────────────────────────

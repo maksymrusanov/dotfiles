@@ -114,8 +114,8 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 for_window [app_id="kitty"] move container to workspace $ws1
 for_window [app_id="com.mitchellh.ghostty"] move container to workspace $ws1
 for_window [app_id="firefox_firefox"] move container to workspace $ws2
-for_window [class="steam"] move container to workspace $ws4
-for_window [class="discord"] move container to workspace $ws4
+for_window [app_id="steam"] move container to workspace $ws4
+for_window [app_id="discord"] move container to workspace $ws4
 for_window [app_id="telegram-desktop_telegram-desktop"] move container to workspace $ws4
 for_window [app_id="Docker Desktop"] move container to workspace $ws5
 # ==========================
