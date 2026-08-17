@@ -5,7 +5,7 @@ font-size = 13
 confirm-close-surface=false
 font-feature = -calt, -liga, -dlig
 # Optional transparency
-background-opacity = 0.7
+background-opacity = 0.5
 background =#000000
 foreground = #CBE0F0
 

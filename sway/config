@@ -1,10 +1,12 @@
 # ==========================
 # Sway config
 # ==========================
+
 input "2362:12305:ASUP1208:00_093A:3011_Touchpad" {
     tap enabled
     tap_button_map lrm
     natural_scroll enabled
+     events disabled
 }
 set $XDG_CURRENT_DESKTOP sway
 set $XDG_SESSION_DESKTOP sway
@@ -114,7 +116,7 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 for_window [app_id="kitty"] move container to workspace $ws1
 for_window [app_id="com.mitchellh.ghostty"] move container to workspace $ws1
 for_window [app_id="firefox_firefox"] move container to workspace $ws2
-for_window [app_id="steam"] move container to workspace $ws4
+for_window [class="steam"] move container to workspace $ws4
 for_window [app_id="discord"] move container to workspace $ws4
 for_window [app_id="telegram-desktop_telegram-desktop"] move container to workspace $ws4
 for_window [app_id="Docker Desktop"] move container to workspace $ws5
@@ -160,7 +162,7 @@ bindsym F8 exec brightnessctl -d amdgpu_bl2 set 5%+
 # ==========================
 # wallpaper
 # ==========================
-output * bg ~/.config/sway/cyber_girl.jpg fill
+output * bg ~/.config/sway/yandare.jpg fill
 
 # ==========================
 # Startup
