@@ -10,7 +10,8 @@ input "2362:12305:ASUP1208:00_093A:3011_Touchpad" {
 }
 set $XDG_CURRENT_DESKTOP sway
 set $XDG_SESSION_DESKTOP sway
-
+bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl2 set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl2 set 5%+
 exec dbus-update-activation-environment --systemd \
     WAYLAND_DISPLAY \
     XDG_CURRENT_DESKTOP=sway \
@@ -155,10 +156,6 @@ bindsym $mod+Shift+space floating toggle
 # ==========================
 bindsym Ctrl+Mod1+p exec sh -c 'mkdir -p ~/Pictures && grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png'
 # ==========================
-# Brightness
-# ==========================
-bindsym F7 exec brightnessctl -d amdgpu_bl2 set 5%-
-bindsym F8 exec brightnessctl -d amdgpu_bl2 set 5%+
 # ==========================
 # wallpaper
 # ==========================
