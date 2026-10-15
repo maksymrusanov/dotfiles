@@ -1,14 +1,14 @@
 {
     "layer": "top",
     "position": "top",
-    "height": 22,
+    "height": 15,
 
     "modules-left": [
         "sway/workspaces"],
 
     "modules-center": [
         "tray",
-        "clock",
+        "clock"
 ],
     "modules-right": [
         "sway/language",
@@ -16,7 +16,7 @@
         "cpu",
         "memory",
         "battery",
-        "custom/wifi",        
+        "custom/wifi"      
     ],
 
     "sway/language": {
@@ -32,12 +32,10 @@
             "default": ""
         }
     },
-
-    "clock": {
-        "format": "{:%H:%M}",
-        "timezone": "Europe/London"
-    },
-
+"clock": {
+    "format": "{:%H:%M}",
+    "timezone": "Europe/London",
+},
     "pulseaudio": {
         "format": "VOLUME:{volume}%",
         "format-muted": "VOLUME: muted"
