@@ -1,98 +1,16 @@
-# ==========================
-# Sway config
-# ==========================
+# ============================================
+# SWAY CONFIG — BLACK & RED
+# ============================================
 
-input "2362:12305:ASUP1208:00_093A:3011_Touchpad" {
-    tap enabled
-    tap_button_map lrm
-    natural_scroll enabled
-     events disabled
-}
-set $XDG_CURRENT_DESKTOP sway
-set $XDG_SESSION_DESKTOP sway
-bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl2 set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl2 set 5%+
-exec dbus-update-activation-environment --systemd \
-    WAYLAND_DISPLAY \
-    XDG_CURRENT_DESKTOP=sway \
-    XDG_SESSION_DESKTOP=sway \
-    DESKTOP_SESSION=sway
+# ============================================
+# Variables
+# ============================================
+
 set $mod Mod4
+set $alt Mod1
 
-font pango:JetBrains Mono 12
-#cursor 
-seat seat0 xcursor_theme Bibata-Modern-Amber 15
-# terminal
-bindsym $mod+Return exec ghostty
-
-# close window
-bindsym Mod1+F4 kill
-
-# launcher
-bindsym $mod+d exec wofi \
-    --show drun \
-    --width 500 \
-    --height 400 \
-    --prompt "Run:"
-# apps
-
-bindsym Mod1+f exec nautilus
-bindsym Mod1+t exec telegram-desktop
-bindsym Mod1+s exec firefox
-
-# ==========================
-# Clipboard
-# ==========================
-
-bindsym $mod+c exec wl-copy
-bindsym $mod+v exec wl-paste
-
-# ==========================
-# Keyboard layout
-# ==========================
-
-input * {
-    xkb_layout gb,ru
-    xkb_options grp:win_space_toggle
-}
-
-# ==========================
-# Audio
-# ==========================
-
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# ==========================
-# Media
-# ==========================
-
-bindsym Control+Right exec playerctl next
-bindsym Control+Left exec playerctl previous
-bindsym Control+space exec playerctl play-pause
-
-# ==========================
-# Workspaces
-# ==========================
-#resize 
-bindsym $mod+r mode "resize"
-mode "resize" {
-    # vim keys
-    bindsym h resize shrink width 5 ppt
-    bindsym l resize grow width 5 ppt
-    bindsym k resize shrink height 5 ppt
-    bindsym j resize grow height 5 ppt
-    # arrows
-    bindsym Left  resize shrink width 5 ppt
-    bindsym Right resize grow width 5 ppt
-    bindsym Up    resize shrink height 5 ppt
-    bindsym Down  resize grow height 5 ppt
-    # exit
-    bindsym Return mode "default"
-    bindsym Escape mode "default"
-}
+set $term ghostty
+set $menu wofi --show drun --width 500 --height 400 --prompt "Run:"
 
 set $ws1 "1-CODE"
 set $ws2 "2-WEB"
@@ -100,11 +18,130 @@ set $ws3 "3"
 set $ws4 "4"
 set $ws5 "5"
 
+# ============================================
+# Environment
+# ============================================
+
+exec dbus-update-activation-environment --systemd \
+    WAYLAND_DISPLAY \
+    XDG_CURRENT_DESKTOP=sway \
+    XDG_SESSION_DESKTOP=sway \
+    DESKTOP_SESSION=sway
+
+# ============================================
+# Appearance
+# ============================================
+
+font pango:JetBrains Mono 12
+
+seat seat0 xcursor_theme Bibata-Modern-Amber 15
+
+default_border pixel 5
+default_floating_border pixel 5
+
+# Black & Red theme
+
+client.focused          #ff0000 #ff0000 #000000 #ff0000
+client.focused_inactive #000000 #000000 #ff0000 #000000
+client.unfocused        #000000 #000000 #ff0000 #000000
+client.urgent           #ff0000 #ff0000 #ffffff #ff0000
+
+# ============================================
+# Input
+# ============================================
+
+input "2362:12305:ASUP1208:00_093A:3011_Touchpad" {
+    tap enabled
+    tap_button_map lrm
+    natural_scroll enabled
+    events disabled
+}
+
+input type:keyboard {
+    xkb_layout gb,ru
+    xkb_options grp:win_space_toggle
+}
+
+focus_follows_mouse yes
+
+# ============================================
+# Terminal & Launcher
+# ============================================
+
+bindsym $mod+Return exec $term
+bindsym $mod+d exec $menu
+
+# ============================================
+# Applications
+# ============================================
+
+bindsym $alt+f exec nautilus
+bindsym $alt+t exec telegram-desktop
+bindsym $alt+s exec firefox
+
+# ============================================
+# Window Management
+# ============================================
+
+# Close window
+bindsym $alt+F4 kill
+
+# Fullscreen
+bindsym $mod+f fullscreen toggle
+
+# Floating
+bindsym $mod+Shift+space floating toggle
+
+# Toggle tiling
+bindsym $mod+Shift+t floating disable
+
+# ============================================
+# Focus
+# ============================================
+
+# Vim navigation
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# Arrow navigation
+bindsym $mod+Left  focus left
+bindsym $mod+Down  focus down
+bindsym $mod+Up    focus up
+bindsym $mod+Right focus right
+
+# ============================================
+# Move Windows
+# ============================================
+
+bindsym $mod+Shift+Left  move left
+bindsym $mod+Shift+Down  move down
+bindsym $mod+Shift+Up    move up
+bindsym $mod+Shift+Right move right
+
+# ============================================
+# Resize Windows
+# ============================================
+
+# Alt + Shift + Arrows
+bindsym $alt+Shift+Left  resize shrink width 50 px
+bindsym $alt+Shift+Right resize grow width 50 px
+bindsym $alt+Shift+Up    resize shrink height 50 px
+bindsym $alt+Shift+Down  resize grow height 50 px
+
+
+# ============================================
+# Workspaces
+# ============================================
+
 bindsym $mod+1 workspace $ws1
 bindsym $mod+2 workspace $ws2
 bindsym $mod+3 workspace $ws3
 bindsym $mod+4 workspace $ws4
 bindsym $mod+5 workspace $ws5
+
+# Move containers to workspaces
 
 bindsym $mod+Shift+1 move container to workspace $ws1
 bindsym $mod+Shift+2 move container to workspace $ws2
@@ -112,82 +149,77 @@ bindsym $mod+Shift+3 move container to workspace $ws3
 bindsym $mod+Shift+4 move container to workspace $ws4
 bindsym $mod+Shift+5 move container to workspace $ws5
 
-# automatic workspace placement
+# ============================================
+# Automatic Workspace Placement
+# ============================================
 
+# Development
 for_window [app_id="kitty"] move container to workspace $ws1
 for_window [app_id="com.mitchellh.ghostty"] move container to workspace $ws1
-for_window [app_id="firefox_firefox"] move container to workspace $ws2
-for_window [class="steam"] move container to workspace $ws4
-for_window [app_id="discord"] move container to workspace $ws4
-for_window [app_id="telegram-desktop_telegram-desktop"] move container to workspace $ws4
-for_window [app_id="Docker Desktop"] move container to workspace $ws5
-# ==========================
-# Focus
-# ==========================
-focus_follows_mouse yes
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
 
-# arrows too
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+# Browser
+assign [app_id="firefox_firefox"] $ws2
+# Communication & Gaming
+assign [class="steam"] $ws4
+assign [app_id="discord"] $ws4
+assign [app_id="telegram-desktop_telegram-desktop"] $ws4
+# Docker
+assign [app_id="Docker Desktop"] $ws5
+# ============================================
+# Audio
+# ============================================
 
-# move windows
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +50%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -50%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+# ============================================
+# Media
+# ============================================
 
-# fullscreen
+bindsym Ctrl+Right exec playerctl next
+bindsym Ctrl+Left exec playerctl previous
+bindsym Ctrl+space exec playerctl play-pause
 
-bindsym $mod+f fullscreen toggle
+# ============================================
+# Screenshots
+# ============================================
 
-# floating
+bindsym Ctrl+$alt+p exec sh -c 'mkdir -p ~/Pictures && grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png'
 
-bindsym $mod+Shift+space floating toggle
+# ============================================
+# Wallpaper
+# ============================================
 
-# ==========================
-# screenshot
-# ==========================
-bindsym Ctrl+Mod1+p exec sh -c 'mkdir -p ~/Pictures && grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png'
-# ==========================
-# ==========================
-# wallpaper
-# ==========================
 output * bg ~/.config/sway/yandare.jpg fill
 
-# ==========================
+# ============================================
 # Startup
-# ==========================
-exec_always nm-applet
-exec_always mako
-exec_always swayidle
+# ============================================
 
-# ==========================
-# Waybar
-# ==========================
+# Start once per Sway session.
+# Reloading the config will not launch duplicates.
+
+exec nm-applet
+exec mako
+exec swayidle
+
 exec_always waybar
 
-# ==========================
-# Window style
-# ==========================
-default_border pixel 5
-client.focused          #ff0000 #ff0000 #000000 #ff0000
-client.focused_inactive #000000 #000000 #ff0000 #000000
-client.unfocused        #000000 #000000 #ff0000 #000000
 
-# reboot
+# ============================================
+# System
+# ============================================
+
+# Reload config
+bindsym $mod+Shift+c reload
+
+# Restart Sway
+bindsym $mod+Shift+r restart
+
+# Reboot
 bindsym Ctrl+F12 exec systemctl reboot
 
-# poweroff
+# Poweroff
 bindsym Ctrl+Delete exec systemctl poweroff
-
-# reload
-bindsym $mod+Shift+c reload 
-# restart sway
-bindsym $mod+Shift+r restart
