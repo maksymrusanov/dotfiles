@@ -5,7 +5,8 @@
 # ============================================
 # Variables
 # ============================================
-
+bindsym XF86MonBrightnessDown exec brightnessctl -d amdgpu_bl2 set 5%-
+bindsym XF86MonBrightnessUp exec brightnessctl -d amdgpu_bl2 set 5%+
 set $mod Mod4
 set $alt Mod1
 
