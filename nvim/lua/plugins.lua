@@ -59,7 +59,6 @@ vim.pack.add({
 	"https://github.com/ibhagwan/fzf-lua",
 	"https://github.com/mbbill/undotree",
 	"https://github.com/HiPhish/rainbow-delimiters.nvim",
-	"https://github.com/ray-x/lsp_signature.nvim",
 	"https://github.com/brenton-leighton/multiple-cursors.nvim",
 })
 
@@ -122,6 +121,10 @@ require("nvim-autopairs").setup()
 -- Blink completion
 -- ─────────────────────────────────────────────
 
+-- ─────────────────────────────────────────────
+-- Blink completion
+-- ─────────────────────────────────────────────
+
 require("blink.cmp").setup({
 
 	keymap = {
@@ -133,8 +136,25 @@ require("blink.cmp").setup({
 	},
 
 	completion = {
+		menu = {
+			auto_show = true,
+		},
+
 		documentation = {
-			auto_show = false,
+			auto_show = true,
+			auto_show_delay_ms = 200,
+			window = {
+				border = "rounded",
+			},
+		},
+	},
+
+	signature = {
+		enabled = true,
+
+		window = {
+			border = "rounded",
+			show_documentation = true,
 		},
 	},
 
@@ -401,16 +421,6 @@ require("render-markdown").setup({})
 -- LSP signature
 -- ─────────────────────────────────────────────
 
-require("lsp_signature").setup({
-
-	hint_enable = false,
-
-	floating_window = true,
-
-	handler_opts = {
-		border = "single",
-	},
-})
 -- ─────────────────────────────────────────────
 -- Lualine
 -- ─────────────────────────────────────────────

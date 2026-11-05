@@ -26,6 +26,13 @@ alias vim="nvim"
 alias vc="python3 -m venv .venv"
 alias va="source .venv/bin/activate"
 alias vd="deactivate"
+
+cpp_run() {
+    local file="$1"
+    local output="${file%.cpp}"
+    g++ -std=c++17 -Wall -Wextra "$file" -o "$output" && "./$output"
+}
+
 # ========================
 # uv completion
 # ========================
@@ -35,8 +42,9 @@ fi
 # ========================
 # tmux safe autostart
 # ========================
+# Automatically attach to the same tmux session
 if command -v tmux >/dev/null && [[ -z "$TMUX" && -t 1 && -z "$SSH_CONNECTION" ]]; then
-  tmux new-session -A -s 0
+  tmux new-session -A -s main
 fi
 # ========================
 # Environment

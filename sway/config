@@ -55,7 +55,7 @@ input "2362:12305:ASUP1208:00_093A:3011_Touchpad" {
     tap enabled
     tap_button_map lrm
     natural_scroll enabled
-    events disabled
+    events disabled 
 }
 
 input type:keyboard {
@@ -156,6 +156,7 @@ bindsym $mod+Shift+5 move container to workspace $ws5
 
 # Development
 for_window [app_id="kitty"] move container to workspace $ws1
+# Always open Ghostty on external monitor
 for_window [app_id="com.mitchellh.ghostty"] move container to workspace $ws1
 
 # Browser
@@ -218,7 +219,19 @@ bindsym $mod+Shift+c reload
 
 # Restart Sway
 bindsym $mod+Shift+r restart
+# External monitor (LEFT)
+output HDMI-A-1 {
+    mode 1920x1080@60Hz
+    position 0 0
+    scale 1
+}
 
+# Laptop monitor (RIGHT)
+output eDP-2 {
+    mode 2880x1800@120Hz
+    position 1920 0
+    scale 2
+}
 # Reboot
 bindsym Ctrl+F12 exec systemctl reboot
 

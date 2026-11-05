@@ -9,6 +9,12 @@ local capabilities = require("blink.cmp").get_lsp_capabilities()
 -- ─────────────────────────────────────────────
 
 local on_attach = function(_, bufnr)
+	-- Signature Help
+	vim.keymap.set("i", "<C-k>", vim.lsp.buf.signature_help, {
+		buffer = bufnr,
+		desc = "Signature help",
+		silent = true,
+	})
 	local map = function(keys, func, desc)
 		vim.keymap.set("n", keys, func, {
 			buffer = bufnr,
@@ -79,8 +85,16 @@ local servers = {
 	},
 
 	-- C / C++
-	clangd = {},
 
+	clangd = {
+		cmd = {
+			"clangd",
+			"--background-index",
+			"--clang-tidy",
+			"--completion-style=detailed",
+			"--header-insertion=iwyu",
+		},
+	},
 	-- Rust
 	rust_analyzer = {},
 
@@ -99,15 +113,16 @@ local servers = {
 -- ─────────────────────────────────────────────
 
 for server, config in pairs(servers) do
-	vim.lsp.config(server, {
-		capabilities = capabilities,
-		on_attach = on_attach,
-		settings = config.settings,
-	})
+	vim.lsp.config(
+		server,
+		vim.tbl_deep_extend("force", config, {
+			capabilities = capabilities,
+			on_attach = on_attach,
+		})
+	)
 
 	vim.lsp.enable(server)
 end
-
 -- ─────────────────────────────────────────────
 -- Diagnostics
 -- ─────────────────────────────────────────────
