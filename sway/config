@@ -1,3 +1,4 @@
+seat * hide_cursor 0
 # ============================================
 # SWAY CONFIG — BLACK & RED
 # ============================================
@@ -188,7 +189,7 @@ bindsym Ctrl+space exec playerctl play-pause
 # Screenshots
 # ============================================
 
-bindsym Ctrl+$alt+p exec sh -c 'mkdir -p ~/Pictures && grim -g "$(slurp)" ~/Pictures/$(date +%F_%H-%M-%S).png'
+bindsym Ctrl+Mod1+p exec sh -c 'grim -g "$(slurp)" - | wl-copy --type image/png'
 
 # ============================================
 # Wallpaper
