@@ -12,8 +12,9 @@ set $mod Mod4
 set $alt Mod1
 
 set $term ghostty
-set $menu wofi --show drun --width 500 --height 400 --prompt "Run:"
 
+set $menu wofi --show drun --width 500 --height 400 --prompt "Run:"
+bindsym $mod+d exec $menu
 set $ws1 "1-CODE"
 set $ws2 "2-WEB"
 set $ws3 "3"
@@ -71,7 +72,6 @@ focus_follows_mouse yes
 # ============================================
 
 bindsym $mod+Return exec $term
-bindsym $mod+d exec $menu
 
 # ============================================
 # Applications
