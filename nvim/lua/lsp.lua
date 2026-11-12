@@ -84,15 +84,33 @@ local servers = {
 		},
 	},
 
-	-- C / C++
-
+	-- C / C++ / PlatformIO / ESP32
 	clangd = {
 		cmd = {
-			"clangd",
+			"/usr/bin/clangd",
 			"--background-index",
 			"--clang-tidy",
 			"--completion-style=detailed",
 			"--header-insertion=iwyu",
+
+			-- GCC + PlatformIO toolchains
+			"--query-driver=/usr/bin/g++," .. vim.fn.expand("~") .. "/.platformio/packages/**/bin/*",
+		},
+
+		filetypes = {
+			"c",
+			"cpp",
+			"objc",
+			"objcpp",
+		},
+
+		root_markers = {
+			"compile_commands.json",
+			"platformio.ini",
+			"compile_flags.txt",
+			".clangd",
+			"CMakeLists.txt",
+			".git",
 		},
 	},
 	-- Rust

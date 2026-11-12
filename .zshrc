@@ -57,3 +57,51 @@ export GZ_CONFIG_PATH="/usr/share/gz"
 # ROS2
 # ========================
 source /opt/ros/jazzy/setup.zsh
+export PATH="$HOME/go/bin:$PATH"
+export PATH="$HOME/.platformio-venv/bin:$PATH"
+# ==========================================
+# PlatformIO — ESP32 / Arduino
+# ==========================================
+
+mc() {
+    case "$1" in
+        build)
+            shift
+            pio run "$@"
+            ;;
+        upload)
+            shift
+            pio run -t upload "$@"
+            ;;
+        clean)
+            shift
+            pio run -t clean "$@"
+            ;;
+        sm)
+            shift
+            pio device monitor -b 115200 "$@"
+            ;;
+        compiledb)
+            shift
+            pio run -t compiledb "$@"
+            ;;
+        list)
+            shift
+            pio device list "$@"
+            ;;
+        info)
+            shift
+            pio project config "$@"
+            ;;
+        *)
+            echo "PlatformIO commands:"
+            echo "  mc build - Build firmware"
+            echo "  mc upload    - Upload firmware"
+            echo "  mc clean     - Clean build"
+            echo "  mc sm        - Serial Monitor"
+            echo "  mc compiledb - Generate compile_commands.json"
+            echo "  mc list      - List connected devices"
+            echo "  mc info      - Project configuration"
+            ;;
+    esac
+}

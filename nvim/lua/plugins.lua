@@ -1,6 +1,24 @@
 -- ─────────────────────────────────────────────
+
 -- Plugin manager (vim.pack)
 -- ─────────────────────────────────────────────
+
+-- Build native dependencies when vim.pack installs or updates plugins.
+-- Register this BEFORE vim.pack.add so first-time installs are handled.
+vim.api.nvim_create_autocmd("PackChanged", {
+	callback = function(ev)
+		local name = ev.data.spec.name
+		local kind = ev.data.kind
+		if kind ~= "install" and kind ~= "update" then
+			return
+		end
+		if name == "blink.cmp" then
+			require("blink.cmp").build()
+		elseif name == "fff.nvim" then
+			require("fff.download").download_or_build_binary()
+		end
+	end,
+})
 
 vim.pack.add({
 	-- dependencies
@@ -116,10 +134,6 @@ require("neo-tree").setup({
 -- ─────────────────────────────────────────────
 
 require("nvim-autopairs").setup()
-
--- ─────────────────────────────────────────────
--- Blink completion
--- ─────────────────────────────────────────────
 
 -- ─────────────────────────────────────────────
 -- Blink completion
@@ -349,18 +363,6 @@ vim.g.fff = {
 	lazy_sync = true,
 }
 
-vim.api.nvim_create_autocmd("PackChanged", {
-
-	callback = function(ev)
-		local name = ev.data.spec.name
-		local kind = ev.data.kind
-
-		if name == "fff.nvim" and (kind == "install" or kind == "update") then
-			require("fff.download").download_or_build_binary()
-		end
-	end,
-})
-
 -- ─────────────────────────────────────────────
 -- Toggle terminal
 -- ─────────────────────────────────────────────
@@ -400,9 +402,6 @@ require("nvim-surround").setup()
 -- Multiple cursors
 -- ─────────────────────────────────────────────
 
-vim.pack.add({
-	"https://github.com/brenton-leighton/multiple-cursors.nvim",
-})
 require("multiple-cursors").setup({})
 vim.keymap.set({ "n", "i", "x" }, "<C-Down>", "<Cmd>MultipleCursorsAddDown<CR>", {
 	desc = "Add cursor and move down",
