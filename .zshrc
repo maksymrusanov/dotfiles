@@ -64,44 +64,151 @@ export PATH="$HOME/.platformio-venv/bin:$PATH"
 # ==========================================
 
 mc() {
-    case "$1" in
-        build)
-            shift
+    local command="$1"
+    shift 2>/dev/null || true
+
+    case "$command" in
+
+        # ==================================
+        # Create Project
+        # ==================================
+        create)
+            if [[ -z "$1" ]]; then
+                echo "Usage: mc create <project_name> [board]"
+                echo "Example: mc create Blink esp32dev"
+                return 1
+            fi
+
+            local project_name="$1"
+            local board="${2:-esp32dev}"
+
+            # Check if project already exists
+            if [[ -e "$project_name" ]]; then
+                echo "Error: '$project_name' already exists."
+                return 1
+            fi
+
+            # Create project directory
+            mkdir -p "$project_name" || return 1
+
+            # Initialize PlatformIO project
+            pio project init \
+                --project-dir "$project_name" \
+                --board "$board" \
+                --project-option "framework=arduino" || return 1
+
+            # Create main.cpp
+            cat > "$project_name/src/main.cpp" <<'EOF'
+#include <Arduino.h>
+
+void setup() {
+
+}
+
+void loop() {
+
+}
+EOF
+
+            # Enter project directory
+            cd "$project_name" || return 1
+
+            # Generate clangd compilation database
+            pio run -t compiledb || return 1
+
+            echo ""
+            echo "=================================="
+            echo "Project created successfully!"
+            echo "Project: $project_name"
+            echo "Board:   $board"
+            echo "=================================="
+            ;;
+
+        # ==================================
+        # Build
+        # ==================================
+        build|run)
             pio run "$@"
             ;;
+
+        # ==================================
+        # Upload Firmware
+        # ==================================
         upload)
-            shift
             pio run -t upload "$@"
             ;;
+
+        # ==================================
+        # Clean Build
+        # ==================================
         clean)
-            shift
             pio run -t clean "$@"
             ;;
+
+        # ==================================
+        # Serial Monitor
+        # ==================================
         sm)
-            shift
             pio device monitor -b 115200 "$@"
             ;;
+
+        # ==================================
+        # Generate clangd Database
+        # ==================================
         compiledb)
-            shift
             pio run -t compiledb "$@"
             ;;
+
+        # ==================================
+        # List Connected Devices
+        # ==================================
         list)
-            shift
             pio device list "$@"
             ;;
+
+        # ==================================
+        # Project Information
+        # ==================================
         info)
-            shift
             pio project config "$@"
             ;;
-        *)
-            echo "PlatformIO commands:"
-            echo "  mc build - Build firmware"
-            echo "  mc upload    - Upload firmware"
-            echo "  mc clean     - Clean build"
-            echo "  mc sm        - Serial Monitor"
-            echo "  mc compiledb - Generate compile_commands.json"
-            echo "  mc list      - List connected devices"
-            echo "  mc info      - Project configuration"
+
+        # ==================================
+        # List Available Boards
+        # ==================================
+        boards)
+            pio boards "$@"
+            ;;
+
+        # ==================================
+        # Upload + Serial Monitor
+        # ==================================
+        flash)
+            pio run -t upload "$@" &&
+                pio device monitor -b 115200
+            ;;
+
+        # ==================================
+        # Help
+        # ==================================
+        help|*)
+            echo "PlatformIO CLI"
+            echo ""
+            echo "Usage: mc <command> [arguments]"
+            echo ""
+            echo "Commands:"
+            echo "  create <name> [board]  Create a project"
+            echo "  build                  Build firmware"
+            echo "  run                    Build firmware"
+            echo "  upload                 Upload firmware"
+            echo "  flash                  Upload + Serial Monitor"
+            echo "  clean                  Clean build"
+            echo "  sm                     Serial Monitor"
+            echo "  compiledb              Generate clangd database"
+            echo "  list                   List connected devices"
+            echo "  boards                 List available boards"
+            echo "  info                   Project configuration"
+            echo "  help                   Show this help"
             ;;
     esac
 }
