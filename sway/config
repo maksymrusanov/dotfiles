@@ -61,7 +61,7 @@ input "2362:12305:ASUP1208:00_093A:3011_Touchpad" {
 }
 
 input type:keyboard {
-    xkb_layout gb,ru
+    xkb_layout us,ru
     xkb_options grp:win_space_toggle
 }
 
