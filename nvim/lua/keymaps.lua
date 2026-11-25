@@ -82,14 +82,6 @@ map("n", "<leader>a", "ggVG", {
 map({ "n", "v" }, "<leader>d", [["_d]], {
 	desc = "Delete without yank",
 })
-
--- ─────────────────────────────────────────────
--- Insert escape
--- ─────────────────────────────────────────────
-map("i", "jk", "<Esc>", {
-	desc = "Exit insert mode",
-})
-
 -- ─────────────────────────────────────────────
 -- LSP
 -- ─────────────────────────────────────────────
@@ -160,4 +152,22 @@ map("n", "<leader>cw", function()
 	vim.cmd([[g/^\s*$/d]])
 end, {
 	desc = "Remove empty lines",
+})
+-- ─────────────────────────────────────────────
+-- FZF-Lua Keymaps
+-- ─────────────────────────────────────────────
+vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>", {
+	desc = "Find files",
+})
+
+vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", {
+	desc = "Find text",
+})
+
+vim.keymap.set("n", "<leader>fb", "<cmd>FzfLua buffers<CR>", {
+	desc = "Find buffers",
+})
+
+vim.keymap.set("n", "<leader>fh", "<cmd>FzfLua helptags<CR>", {
+	desc = "Find help",
 })

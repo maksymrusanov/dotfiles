@@ -84,17 +84,15 @@ local servers = {
 		},
 	},
 
-	-- C / C++ / PlatformIO / ESP32
+	-- C / C++ / ROS 2 / PlatformIO / ESP32
 	clangd = {
 		cmd = {
-			"/usr/bin/clangd",
+			"clangd",
 			"--background-index",
 			"--clang-tidy",
 			"--completion-style=detailed",
 			"--header-insertion=iwyu",
-
-			-- GCC + PlatformIO toolchains
-			"--query-driver=/usr/bin/g++," .. vim.fn.expand("~") .. "/.platformio/packages/**/bin/*",
+			"--query-driver=/usr/bin/g++,/usr/bin/gcc,/home/max/.platformio/packages/**/bin/*g++,/home/max/.platformio/packages/**/bin/*gcc",
 		},
 
 		filetypes = {
@@ -102,6 +100,7 @@ local servers = {
 			"cpp",
 			"objc",
 			"objcpp",
+			"cuda",
 		},
 
 		root_markers = {
@@ -114,7 +113,20 @@ local servers = {
 		},
 	},
 	-- Rust
-	rust_analyzer = {},
+	rust_analyzer = {
+		cmd = {
+			"rust-analyzer",
+		},
+
+		filetypes = {
+			"rust",
+		},
+
+		root_markers = {
+			"Cargo.toml",
+			"rust-project.json",
+		},
+	},
 
 	-- Web
 	cssls = {},

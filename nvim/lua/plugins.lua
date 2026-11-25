@@ -1,5 +1,4 @@
 -- ─────────────────────────────────────────────
-
 -- Plugin manager (vim.pack)
 -- ─────────────────────────────────────────────
 
@@ -80,6 +79,66 @@ vim.pack.add({
 	"https://github.com/brenton-leighton/multiple-cursors.nvim",
 })
 
+-- ─────────────────────────────────────────────
+-- FZF-Lua
+-- ─────────────────────────────────────────────
+require("fzf-lua").setup({
+	winopts = {
+		width = 0.85,
+		height = 0.80,
+		preview = {
+			layout = "vertical",
+			vertical = "right:50%",
+		},
+	},
+
+	files = {
+		hidden = true,
+		git_icons = true,
+		file_icons = true,
+	},
+
+	buffers = {
+		sort_lastused = true,
+	},
+
+	grep = {
+		hidden = true,
+	},
+
+	keymap = {
+		builtin = {
+			["<Esc>"] = "hide",
+		},
+	},
+})
+-- ─────────────────────────────────────────────
+-- Neo-tree
+-- ─────────────────────────────────────────────
+require("neo-tree").setup({
+	window = {
+		position = "right",
+		mappings = {
+			["<BS>"] = "close_node",
+		},
+	},
+
+	filesystem = {
+		bind_to_cwd = true,
+		cwd_target = {
+			sidebar = "tab",
+			current = "window",
+		},
+
+		filtered_items = {
+			hide_dotfiles = false,
+		},
+
+		follow_current_file = {
+			enabled = true,
+		},
+	},
+})
 -- ─────────────────────────────────────────────
 -- Theme
 -- ─────────────────────────────────────────────
@@ -442,12 +501,10 @@ local theme = {
 			fg = colors.bg,
 			gui = "bold",
 		},
-
 		b = {
 			bg = colors.bg_alt,
 			fg = colors.fg,
 		},
-
 		c = {
 			bg = colors.bg,
 			fg = colors.fg,
@@ -461,7 +518,6 @@ local theme = {
 			gui = "bold",
 		},
 	},
-
 	visual = {
 		a = {
 			bg = colors.red_dim,
@@ -484,51 +540,41 @@ local function lsp()
 end
 
 require("lualine").setup({
-
 	options = {
-
 		theme = theme,
-
 		component_separators = "",
-
 		section_separators = "",
-
 		globalstatus = true,
 	},
 
 	sections = {
-
 		lualine_a = {
 			"mode",
 		},
 
 		lualine_b = {
 			"branch",
+			"diff",
 		},
 
 		lualine_c = {
-
 			{
 				"filename",
-
-				path = 2,
+				path = 1,
 			},
 		},
 
 		lualine_x = {
-
 			"diagnostics",
-
 			lsp,
 		},
 
+		lualine_y = {},
 		lualine_z = {
-
 			"location",
 		},
 	},
 })
-
 -- ─────────────────────────────────────────────
 -- Dashboard (Snacks)
 -- ─────────────────────────────────────────────
