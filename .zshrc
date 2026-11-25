@@ -43,7 +43,7 @@ fi
 # tmux safe autostart
 # ========================
 # Automatically attach to the same tmux session
-if command -v tmux >/dev/null && [[ -z "$TMUX" && -t 1 && -z "$SSH_CONNECTION" ]]; then
+if command -v tmux >/dev/null && [[ -z "$TMUX" && -t 0 && -z "$SSH_CONNECTION" ]]; then
   tmux new-session -A -s main
 fi
 # ========================

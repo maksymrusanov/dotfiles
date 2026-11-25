@@ -30,14 +30,11 @@ vim.opt.scrolloff = 8
 local undo_dir = vim.fn.expand("~/.undodir")
 
 if vim.fn.isdirectory(undo_dir) == 0 then
-    vim.fn.mkdir(undo_dir, "p", "0700")
+	vim.fn.mkdir(undo_dir, "p", "0700")
 end
 
 vim.opt.undofile = true
 vim.opt.undodir = undo_dir
 
 -- Mason binaries
-vim.env.PATH =
-    vim.fn.stdpath("data")
-    .. "/mason/bin:"
-    .. vim.env.PATH
+vim.env.PATH = vim.fn.stdpath("data") .. "/mason/bin:" .. vim.env.PATH
