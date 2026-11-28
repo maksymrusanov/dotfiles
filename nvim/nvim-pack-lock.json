@@ -16,6 +16,10 @@
       "rev": "619363c30309d29ffa631e67c8183f2a72caa373",
       "src": "https://github.com/stevearc/conform.nvim"
     },
+    "cord.nvim": {
+      "rev": "85f295e43550bc968b66d95d8bfd6e12bb17df08",
+      "src": "https://github.com/vyfor/cord.nvim"
+    },
     "fff.nvim": {
       "rev": "5858d893b5885eea6a87ff271aaf526110fc79d0",
       "src": "https://github.com/dmtrKovalenko/fff.nvim"

@@ -21,6 +21,7 @@ vim.api.nvim_create_autocmd("PackChanged", {
 
 vim.pack.add({
 	-- dependencies
+      "https://github.com/vyfor/cord.nvim",
 	"https://github.com/nvim-lua/plenary.nvim",
 	"https://github.com/MunifTanjim/nui.nvim",
 	"https://github.com/nvim-tree/nvim-web-devicons",
@@ -79,6 +80,47 @@ vim.pack.add({
 	"https://github.com/brenton-leighton/multiple-cursors.nvim",
 })
 
+-- ─────────────────────────────────────────────
+-- Discord Rich Presence
+-- ─────────────────────────────────────────────
+require("cord").setup({
+	editor = {
+		client = "neovim",
+		tooltip = "Neovim",
+	},
+
+	display = {
+		theme = "default",
+		flavor = "dark",
+		view = "full",
+	},
+
+	timestamp = {
+		enabled = true,
+		reset_on_change = false,
+	},
+
+	idle = {
+		enabled = true,
+		timeout = 300000,
+		show_status = true,
+		details = "Taking a break",
+	},
+
+	text = {
+		editing = function(opts)
+			return "Editing " .. opts.filename
+		end,
+
+		viewing = function(opts)
+			return "Viewing " .. opts.filename
+		end,
+
+		workspace = function(opts)
+			return "Working on " .. opts.workspace
+		end,
+	},
+})
 -- ─────────────────────────────────────────────
 -- FZF-Lua
 -- ─────────────────────────────────────────────
